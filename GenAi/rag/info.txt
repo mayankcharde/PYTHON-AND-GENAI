@@ -1,0 +1,96 @@
+commands : pip install -qU langchain-community pypdf
+
+          pip install -qU langchain-text-splitters
+          pip install -qU langchain-openai
+          pip install -qU langchain-qdrant
+
+
+THROUGH GOOGLE GEMINI
+pip install -U langchain langchain-community langchain-google-genai qdrant-client python-dotenv
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+INDEX.PY
+
+DEMO CODE 
+
+
+from pathlib import Path
+
+from langchain_community.document_loaders import PyPDFLoader
+from langchain_text_splitters import RecursiveCharacterTextSplitter
+from langchain_community.embeddings import HuggingFaceEmbeddings
+from langchain_qdrant import QdrantVectorStore
+
+# PDF file path
+pdf_path = Path(__file__).parent / "nodejs.pdf"
+
+# Load PDF
+loader = PyPDFLoader(file_path=pdf_path)
+docs = loader.load()
+
+# Split documents into chunks
+text_splitter = RecursiveCharacterTextSplitter(
+    chunk_size=400,
+    chunk_overlap=100
+)
+chunks = text_splitter.split_documents(docs)
+
+# ✅ FREE Local Embedding Model (NO API KEY REQUIRED)
+embedding_model = HuggingFaceEmbeddings(
+    model_name="all-MiniLM-L6-v2"
+)
+
+# Store embeddings in Qdrant
+vector_store = QdrantVectorStore.from_documents(
+    documents=chunks,
+    embedding=embedding_model,
+    url="http://localhost:6333",
+    collection_name="learning_rag"
+)
+
+print("✅ Indexing of documents done successfully (FREE local embeddings)")
+
+
+
+
+

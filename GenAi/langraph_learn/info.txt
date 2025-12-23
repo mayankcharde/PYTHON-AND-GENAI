@@ -1,0 +1,72 @@
+INSTALLATION
+pip install -U langgraph
+
+
+
+
+
+
+
+
+
+
+
+
+⭐ LangGraph — IMP ONLY
+
+LangGraph is used to build stateful, multi-step LLM workflows using graphs
+
+Works on nodes + edges + shared state
+
+Supports branching, loops, retries, multi-agent flows
+
+Built on top of LangChain
+
+Best for agent systems, RAG, long conversations
+
+👉 LangChain = linear flow
+👉 LangGraph = decision-based flow
+
+⭐ Checkpointer — IMP ONLY
+
+Checkpointer saves graph execution state
+
+Enables resume after crash
+
+Stores memory, variables, messages
+
+Required for long-running agents
+
+Common types: Memory / SQLite / Redis / Postgres
+
+👉 Think of it as “Save & Resume for AI workflows”
+
+⭐ Model Evaluation in LangGraph — IMP ONLY
+
+LangGraph does NOT auto-evaluate models
+
+Evaluation is done using custom nodes
+
+Used to check:
+
+Output quality
+
+Hallucinations
+
+Agent decisions
+
+Often uses LLM-as-a-Judge
+
+Evaluation result controls:
+
+Retry
+
+Loop
+
+Accept / Reject output
+
+⭐ One-Line Final Summary (Very IMP)
+
+LangGraph builds stateful agent workflows,
+Checkpointers persist execution state,
+Model evaluation is added via custom evaluation nodes to control retries and quality.
