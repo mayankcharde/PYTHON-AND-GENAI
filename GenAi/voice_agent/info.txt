@@ -1,0 +1,7 @@
+pip install SpecchRecognition
+
+python -m pip install pipwin
+python -m pipwin install pyaudio
+
+
+pip install openai[voice_helpers]
